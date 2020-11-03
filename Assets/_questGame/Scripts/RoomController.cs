@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     [SerializeField] private GameObject _enemiesEmitter;
+    [SerializeField] private GameObject _door;
 
     private EnemiesEmitter _emitterComponent;
     private int _enemiesCount;
@@ -13,12 +14,15 @@ public class RoomController : MonoBehaviour
     void Start()
     {
         _emitterComponent = _enemiesEmitter.GetComponent<EnemiesEmitter>();
-        _enemiesCount = _emitterComponent.GetEnemiesCount();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (_emitterComponent.GetAliveEnemiesCount() == 0)
+        {
+            _door.SetActive(false);
+        }
     }
+
 }

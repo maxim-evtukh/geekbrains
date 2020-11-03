@@ -8,8 +8,9 @@ public class Mine : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
+
 }
