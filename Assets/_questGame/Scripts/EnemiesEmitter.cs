@@ -50,12 +50,15 @@ public class EnemiesEmitter : MonoBehaviour
         navMeshAgent.Warp(vector);
         navMeshAgent.transform.Rotate(0, _yRotation, 0);
 
-        var destinationVector = new Vector3(transform.localScale.x > transform.localScale.z ? enemy.transform.position.x : _destinationWaypoint.position.x,
+        enemy.GetComponent<DeactivationController>().onDisable = OnEnemyDisabled;
+
+        if (_destinationWaypoint != null)
+        {
+            var destinationVector = new Vector3(transform.localScale.x > transform.localScale.z ? enemy.transform.position.x : _destinationWaypoint.position.x,
                                             0,
                                             transform.localScale.x > transform.localScale.z ? _destinationWaypoint.position.z : enemy.transform.position.z);
-
-        enemy.GetComponent<DeactivationController>().onDisable = OnEnemyDisabled;
-        enemy.GetComponent<EnemyWaypointPatrol>().waypoints = new Vector3[] { enemy.transform.position, destinationVector };
+            enemy.GetComponent<EnemyWaypointPatrol>().waypoints = new Vector3[] { enemy.transform.position, destinationVector };
+        }
 
         _enemies.Add(enemy);
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MineController : MonoBehaviour
+public class MineEmitter : MonoBehaviour
 {
     [SerializeField] private GameObject _mine;
 

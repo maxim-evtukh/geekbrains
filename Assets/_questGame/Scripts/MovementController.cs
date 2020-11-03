@@ -20,6 +20,9 @@ public class MovementController : MonoBehaviour
         _direction.x = Input.GetAxis("Horizontal");
         _direction.z = Input.GetAxis("Vertical");
 
-        transform.position += _direction * (_speed * Time.deltaTime);
+        var newPos = transform.position + _direction * (_speed * Time.deltaTime);
+        newPos.y = 0;
+
+        transform.position = newPos;
     }
 }
