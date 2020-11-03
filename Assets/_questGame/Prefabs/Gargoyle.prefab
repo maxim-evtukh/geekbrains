@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4115077866795879165}
-  - component: {fileID: 414319213598258492}
+  - component: {fileID: 5057563755409528257}
   m_Layer: 0
   m_Name: ShootsEmitter
   m_TagString: Untagged
@@ -108,13 +108,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3954609781013758293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.351, y: 0.87, z: 0.554}
+  m_LocalPosition: {x: 0.362, y: 0.87, z: 0.554}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5020100969243295925}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &414319213598258492
+--- !u!114 &5057563755409528257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +123,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3954609781013758293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef65c7c5d54747168fcf39260577bc3, type: 3}
+  m_Script: {fileID: 11500000, guid: e9642228b2bf84cd3abdf2ac7ef23947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shoot: {fileID: 5078677076577915880, guid: 8e566af5e29224eacb2a4acb7c798cc6, type: 3}
+  _firstShotDelay: 2
+  _shotDelay: 5
+  _shotSpeed: 200
 --- !u!1 &8659230790534070658
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +202,7 @@ GameObject:
   - component: {fileID: -2595423733894045393}
   - component: {fileID: 326697364998615773}
   - component: {fileID: 2699395730039521229}
-  - component: {fileID: 4197596939644182882}
+  - component: {fileID: -1185623566218120931}
   m_Layer: 0
   m_Name: Gargoyle
   m_TagString: Untagged
@@ -290,7 +294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3db60462bb848338823a3fc57db807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4197596939644182882
+  _view: {fileID: 8659230790534070658}
+  _gun: {fileID: 3954609781013758293}
+--- !u!114 &-1185623566218120931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,6 +305,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8944249100028071604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90c6a519720f4da5945d4d4224ff55d, type: 3}
+  m_Script: {fileID: 11500000, guid: b4cc465e4f1404c3c87b0a0bb2a19220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

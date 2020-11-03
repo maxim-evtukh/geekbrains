@@ -421,8 +421,8 @@ GameObject:
   - component: {fileID: 4298608313813407502}
   - component: {fileID: 8343891721500563884}
   - component: {fileID: 8024973167295927335}
-  - component: {fileID: -4373393565207997029}
-  - component: {fileID: 1373746921920778337}
+  - component: {fileID: 3810546384793501102}
+  - component: {fileID: 8744162441151049299}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -614,7 +614,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-4373393565207997029
+--- !u!114 &3810546384793501102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -623,10 +623,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5316395829455084692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90c6a519720f4da5945d4d4224ff55d, type: 3}
+  m_Script: {fileID: 11500000, guid: b4cc465e4f1404c3c87b0a0bb2a19220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1373746921920778337
+--- !u!114 &8744162441151049299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -635,13 +635,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5316395829455084692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8f592eac84b491eb44e625f69fabdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d7f3936e24b6412e98748ac117d5617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1270459482472491497}
   waypoints:
-  - {x: 4.2880196e-13, y: 4.5905e-41, z: 0}
-  - {x: 0, y: 6.937398e-14, z: 1e-45}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &5391568399763398634
 GameObject:
   m_ObjectHideFlags: 0

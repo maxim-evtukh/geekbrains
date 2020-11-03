@@ -122,6 +122,53 @@ Transform:
   m_Father: {fileID: 3976213259159357981}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1240596601222376772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800076852143195294}
+  - component: {fileID: 7558279558943921744}
+  m_Layer: 0
+  m_Name: ShotEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800076852143195294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240596601222376772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.575, z: 0.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 233863614250116554}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7558279558943921744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240596601222376772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9642228b2bf84cd3abdf2ac7ef23947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shoot: {fileID: 316641098684240976, guid: 30301cb9a362841df8dfb985ad063002, type: 3}
+  _firstShotDelay: 0
+  _shotDelay: 5
+  _shotSpeed: 250
 --- !u!1 &1272929981873115171
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +606,7 @@ GameObject:
   - component: {fileID: 2989845126233294388}
   - component: {fileID: 2030896476234110585}
   - component: {fileID: 1251571581962746087}
+  - component: {fileID: 2056923016745041557}
   m_Layer: 0
   m_Name: JohnLemon
   m_TagString: Untagged
@@ -579,6 +627,7 @@ Transform:
   m_Children:
   - {fileID: 2057932834984850831}
   - {fileID: 2717229655326978016}
+  - {fileID: 800076852143195294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,6 +784,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5515008499709634024}
   m_Enabled: 1
+--- !u!114 &2056923016745041557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5515008499709634024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad7599a612cc4fd9bcec535eeecdc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gun: {fileID: 1240596601222376772}
 --- !u!1 &5992735395461554809
 GameObject:
   m_ObjectHideFlags: 0
