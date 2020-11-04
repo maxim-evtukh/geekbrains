@@ -29,7 +29,6 @@ public class ShootEmitter : MonoBehaviour
         _nextShotTime = Time.time + _firstShotDelay;
     }
 
-
     private void Update()
     {
         InitGun();
@@ -40,24 +39,25 @@ public class ShootEmitter : MonoBehaviour
         _nextShotTime = Time.time + _shotDelay;
     }
 
-    private void MakeShot()
-    {
-        InitShot(gameObject.transform);
-    }
-
     private void InitShot(Transform from)
     {
-        var shot = Instantiate(_shoot, from.parent);
+        var shot = Instantiate(_shoot, from.position, Quaternion.identity);
         var forwardVel = transform.forward * -_shotSpeed;
         shot.GetComponent<Rigidbody>().velocity = new Vector3(forwardVel.x, 0, forwardVel.z);
     }
 
-    public void InitGun()
+    private void InitGun()
     {
         if (_enabled && Time.time > _nextShotTime)
         {
             MakeShot();
-            DelayLazerShot();
         }
     }
+
+    public void MakeShot()
+    {
+        InitShot(gameObject.transform);
+        DelayLazerShot();
+    }
+
 }

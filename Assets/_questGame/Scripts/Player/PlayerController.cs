@@ -12,20 +12,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _shootEmitter = _gun.GetComponent<ShootEmitter>();
-        UnlockGun();
     }
 
     private void Update()
     {
         if (_canShoot && Input.GetKeyDown(KeyCode.Space))
         {
-            _shootEmitter.InitGun();
+            _shootEmitter.MakeShot();
         }
     }
 
     public void UnlockGun()
     {
-        _shootEmitter.Enabled = true;
         _canShoot = true;
     }
 }

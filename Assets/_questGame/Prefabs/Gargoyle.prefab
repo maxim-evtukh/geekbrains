@@ -129,7 +129,7 @@ MonoBehaviour:
   _shoot: {fileID: 5078677076577915880, guid: 8e566af5e29224eacb2a4acb7c798cc6, type: 3}
   _firstShotDelay: 2
   _shotDelay: 5
-  _shotSpeed: 200
+  _shotSpeed: -2
 --- !u!1 &8659230790534070658
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 655896814990362356}
   m_Layer: 0
   m_Name: PointOfView
-  m_TagString: Untagged
+  m_TagString: Invisible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: -1185623566218120931}
   m_Layer: 0
   m_Name: Gargoyle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
