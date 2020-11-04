@@ -5,25 +5,21 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float _speed = 4f;
+    [SerializeField] private float _turnSpeed = 20f;
 
-    private Vector3 _direction;
+    private Vector3 _movement;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        _direction = transform.position;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        _movement.Set(horizontal, 0f, vertical);
+
+        transform.position = transform.position + _movement * (_speed * Time.deltaTime);
+
+        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, _movement.normalized, _turnSpeed * Time.deltaTime, 0f);
+        transform.rotation = Quaternion.LookRotation(desiredForward);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        _direction.x = Input.GetAxis("Horizontal");
-        _direction.z = Input.GetAxis("Vertical");
-
-        var newPos = transform.position + _direction * (_speed * Time.deltaTime);
-        newPos.y = 0;
-
-        transform.position = newPos;
-        transform.rotation = Quaternion.identity;
-    }
 }

@@ -47,8 +47,8 @@ public class ShootEmitter : MonoBehaviour
 
     private void InitShot(Transform from)
     {
-        var shot = Instantiate(_shoot, from);
-        var forwardVel = shot.transform.forward * -_shotSpeed;
+        var shot = Instantiate(_shoot, from.parent);
+        var forwardVel = transform.forward * -_shotSpeed;
         shot.GetComponent<Rigidbody>().velocity = new Vector3(forwardVel.x, 0, forwardVel.z);
     }
 

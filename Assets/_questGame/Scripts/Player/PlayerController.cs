@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _shootEmitter = _gun.GetComponent<ShootEmitter>();
+        UnlockGun();
     }
 
     private void Update()
