@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class EnemiesEmitter : MonoBehaviour
 {
+    public delegate void EnemiesEmitterDelegate();
+
+    public EnemiesEmitterDelegate OnAllEnemiesKilled;
+
     [SerializeField] private GameObject _enemy;
     [SerializeField] private int _enemiesCount;
 
@@ -68,6 +72,11 @@ public class EnemiesEmitter : MonoBehaviour
         var enemy = _enemies.FirstOrDefault((obj) => { return obj.GetInstanceID() == instanceID; });
         _enemies.Remove(enemy);
         Destroy(enemy);
+
+        if (GetAliveEnemiesCount() == 0)
+        {
+            OnAllEnemiesKilled?.Invoke();
+        }
     }
 
     public int GetEnemiesCount()

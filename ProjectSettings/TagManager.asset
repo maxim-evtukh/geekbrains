@@ -8,6 +8,7 @@ TagManager:
   - EnemyShot
   - PlayerShot
   - Invisible
+  - Ground
   layers:
   - Default
   - TransparentFX

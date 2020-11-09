@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemiesEmitter;
+    [SerializeField] private EnemiesEmitter _emitterComponent;
     [SerializeField] private GameObject _door;
 
-    private EnemiesEmitter _emitterComponent;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _emitterComponent = _enemiesEmitter.GetComponent<EnemiesEmitter>();
+        _emitterComponent.OnAllEnemiesKilled = OpenDoor;
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void OpenDoor()
     {
-        if (_emitterComponent.GetAliveEnemiesCount() == 0)
-        {
-            _door.SetActive(false);
-        }
+        _door.SetActive(false);
     }
 
 }

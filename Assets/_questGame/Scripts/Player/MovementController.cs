@@ -16,9 +16,9 @@ public class MovementController : MonoBehaviour
 
         _movement.Set(horizontal, 0f, vertical);
 
-        transform.position = transform.position + _movement * (_speed * Time.deltaTime);
+        transform.position += _movement * (_speed * Time.deltaTime);
 
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, _movement.normalized, _turnSpeed * Time.deltaTime, 0f);
+        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, _movement, _turnSpeed * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(desiredForward);
     }
 
