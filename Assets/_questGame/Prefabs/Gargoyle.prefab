@@ -121,7 +121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3954609781013758293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9642228b2bf84cd3abdf2ac7ef23947, type: 3}
   m_Name: 
@@ -294,8 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3db60462bb848338823a3fc57db807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 8659230790534070658}
-  _gun: {fileID: 3954609781013758293}
+  _viewController: {fileID: 655896814990362356}
+  _shootEmitter: {fileID: 5057563755409528257}
 --- !u!114 &-1185623566218120931
 MonoBehaviour:
   m_ObjectHideFlags: 0

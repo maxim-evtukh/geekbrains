@@ -1,12 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private float _destroyDelay;
 
+    #endregion
+
+
+    #region PrivateData
+
     private float _selfDestroyTime;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Start()
     {
@@ -29,5 +39,7 @@ public class Mine : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    #endregion
 
 }

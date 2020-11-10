@@ -5,28 +5,37 @@ using UnityEngine;
 
 public class GargoyleController : MonoBehaviour
 {
-    [SerializeField] private GameObject _view;
-    [SerializeField] private GameObject _gun;
+    #region Fields
 
-    private GargoyleViewController _viewController;
-    private ShootEmitter _shootEmitter;
+    [SerializeField] private GargoyleViewController _viewController;
+    [SerializeField] private ShootEmitter _shootEmitter;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Start()
     {
-        _viewController = _view.GetComponent<GargoyleViewController>();
         _viewController.OnPlayerFound = OnPlayerFound;
         _viewController.OnPlayerLost = OnPlayerLost;
-
-        _shootEmitter = _gun.GetComponent<ShootEmitter>();
     }
+
+    #endregion
+
+
+    #region Methods
 
     private void OnPlayerFound()
     {
-        _shootEmitter.Enabled = true;
+        _shootEmitter.enabled = true;
     }
 
     private void OnPlayerLost()
     {
-        _shootEmitter.Enabled = false;
+        _shootEmitter.enabled = false;
     }
+
+    #endregion
+
 }

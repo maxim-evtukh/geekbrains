@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class GunEmitter : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemiesEmitter;
+    #region Fields
+
+    [SerializeField] private EnemiesEmitter _enemiesEmitter;
     [SerializeField] private GameObject _gun;
 
-    private EnemiesEmitter _emitterComponent;
-    private bool _instantiated;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+
+    #region UnitMethods
+
+    private void OnEnable()
     {
-        _emitterComponent = _enemiesEmitter.GetComponent<EnemiesEmitter>();
+        _enemiesEmitter.OnAllEnemiesKilled += InitGun;
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void OnDisable()
     {
-        if (_emitterComponent.GetAliveEnemiesCount() == 0 && !_instantiated)
-        {
-            _instantiated = true;
-            Instantiate(_gun, transform);
-        }
+        _enemiesEmitter.OnAllEnemiesKilled -= InitGun;
     }
+
+    #endregion
+
+
+    #region Methods
+
+    private void InitGun()
+    {
+        _enemiesEmitter.OnAllEnemiesKilled -= InitGun;
+        Instantiate(_gun, transform);
+    }
+
+    #endregion
 
 }

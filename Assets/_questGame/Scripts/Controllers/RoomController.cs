@@ -4,17 +4,42 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    [SerializeField] private EnemiesEmitter _emitterComponent;
+    #region Fields
+
+    [SerializeField] private EnemiesEmitter _enemiesEmitter;
     [SerializeField] private GameObject _door;
 
-    private void Start()
+    #endregion
+
+
+    #region UnityMethods
+
+    private void OnEnable()
     {
-        _emitterComponent.OnAllEnemiesKilled = OpenDoor;
+        _enemiesEmitter.OnAllEnemiesKilled += OpenDoor;
+
     }
+
+    private void OnDisable()
+    {
+        _enemiesEmitter.OnAllEnemiesKilled -= OpenDoor;
+    }
+
+    #endregion
+
+
+    #region Methods
 
     private void OpenDoor()
     {
-        _door.SetActive(false);
+        _enemiesEmitter.OnAllEnemiesKilled -= OpenDoor;
+
+        if (_door != null)
+        {
+            _door.SetActive(false);
+        }
     }
+
+    #endregion
 
 }

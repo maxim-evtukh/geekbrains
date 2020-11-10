@@ -5,20 +5,39 @@ using UnityEngine.AI;
 
 public class EnemiesEmitter : MonoBehaviour
 {
-    public delegate void EnemiesEmitterDelegate();
-
-    public EnemiesEmitterDelegate OnAllEnemiesKilled;
+    #region Fields
 
     [SerializeField] private GameObject _enemy;
     [SerializeField] private int _enemiesCount;
-
     [SerializeField] private float _yRotation;
-
     [SerializeField] private Transform _destinationWaypoint;
+
+    #endregion
+
+
+    #region PrivateData
 
     private List<GameObject> _enemies = new List<GameObject>();
 
-    // Start is called before the first frame update
+    #endregion
+
+
+    #region Delegates
+
+    public delegate void EnemiesEmitterDelegate();
+
+    #endregion
+
+
+    #region Properties
+
+    public EnemiesEmitterDelegate OnAllEnemiesKilled;
+
+    #endregion
+
+
+    #region UnityMethods
+
     private void Start()
     {
         float getAxe() => transform.localScale.x > transform.localScale.z
@@ -42,6 +61,11 @@ public class EnemiesEmitter : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Methods
+
     private void InitEnemy(float position)
     {
         var enemy = Instantiate(_enemy);
@@ -54,14 +78,14 @@ public class EnemiesEmitter : MonoBehaviour
         navMeshAgent.Warp(vector);
         navMeshAgent.transform.Rotate(0, _yRotation, 0);
 
-        enemy.GetComponent<DeactivationController>().onDisable = OnEnemyDisabled;
+        enemy.GetComponent<DeactivationController>().OnDisabled = OnEnemyDisabled;
 
         if (_destinationWaypoint != null)
         {
             var destinationVector = new Vector3(transform.localScale.x > transform.localScale.z ? enemy.transform.position.x : _destinationWaypoint.position.x,
                                             0,
                                             transform.localScale.x > transform.localScale.z ? _destinationWaypoint.position.z : enemy.transform.position.z);
-            enemy.GetComponent<EnemyWaypointPatrol>().waypoints = new Vector3[] { enemy.transform.position, destinationVector };
+            enemy.GetComponent<EnemyWaypointPatrol>().Waypoints = new Vector3[] { enemy.transform.position, destinationVector };
         }
 
         _enemies.Add(enemy);
@@ -73,20 +97,12 @@ public class EnemiesEmitter : MonoBehaviour
         _enemies.Remove(enemy);
         Destroy(enemy);
 
-        if (GetAliveEnemiesCount() == 0)
+        if (_enemies.Count == 0)
         {
             OnAllEnemiesKilled?.Invoke();
         }
     }
 
-    public int GetEnemiesCount()
-    {
-        return _enemiesCount;
-    }
-
-    public int GetAliveEnemiesCount()
-    {
-        return _enemies.Count;
-    }
+    #endregion
 
 }

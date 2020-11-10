@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class ShootEmitter : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private GameObject _shoot;
-    [SerializeField] private float _firstShotDelay, _shotDelay;
+    [SerializeField] private float _firstShotDelay;
+    [SerializeField] private float _shotDelay;
     [SerializeField] private float _shotSpeed;
+
+    #endregion
+
+
+    #region PrivateData
 
     private float _nextShotTime;
 
-    private bool _enabled;
-    public bool Enabled
-    {
-        get => _enabled;
-        set
-        {
-            _enabled = value;
-            if (_enabled)
-            {
-                OnEnabled();
-            }
-        }
-    }
+    #endregion
 
-    private void OnEnabled()
+
+    #region UnityMethods
+
+    private void OnEnable()
     {
         _nextShotTime = Time.time + _firstShotDelay;
     }
@@ -32,6 +31,17 @@ public class ShootEmitter : MonoBehaviour
     private void Update()
     {
         InitGun();
+    }
+
+    #endregion
+
+
+    #region Methods
+
+    public void MakeShot()
+    {
+        InitShot(gameObject.transform);
+        DelayLazerShot();
     }
 
     private void DelayLazerShot()
@@ -48,16 +58,12 @@ public class ShootEmitter : MonoBehaviour
 
     private void InitGun()
     {
-        if (_enabled && Time.time > _nextShotTime)
+        if (Time.time > _nextShotTime)
         {
             MakeShot();
         }
     }
 
-    public void MakeShot()
-    {
-        InitShot(gameObject.transform);
-        DelayLazerShot();
-    }
+    #endregion
 
 }

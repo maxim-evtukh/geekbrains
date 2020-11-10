@@ -3,11 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private GameObject _player;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Start()
     {
-        _player.GetComponent<DeactivationController>().onDisable = OnPlayerCaught;
+        _player.GetComponent<DeactivationController>().OnDisabled = OnPlayerCaught;
     }
 
     private void Update()
@@ -18,9 +25,16 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Methods
+
     private void OnPlayerCaught(int instanceID)
     {
         SceneManager.LoadScene(0);
     }
+
+    #endregion
 
 }

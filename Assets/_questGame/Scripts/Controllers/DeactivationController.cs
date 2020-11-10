@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class DeactivationController : MonoBehaviour
 {
+    #region Delegates
+
     public delegate void DisableDelegate(int instanceID);
 
-    public DisableDelegate onDisable;
+    #endregion
+
+
+    #region Properties
+
+    public DisableDelegate OnDisabled;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void OnDisable()
     {
-        onDisable?.Invoke(gameObject.GetInstanceID());
+        OnDisabled?.Invoke(gameObject.GetInstanceID());
     }
+
+    #endregion
 
 }

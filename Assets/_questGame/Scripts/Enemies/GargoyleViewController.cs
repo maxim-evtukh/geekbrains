@@ -1,20 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class GargoyleViewController : MonoBehaviour
 {
+    #region Fields
+
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+
+    #endregion
+
+
+    #region PrivateData
+
+    private GameObject _player;
+    private Quaternion _startRotation;
+
+    #endregion
+
+
+    #region Delegates
+
     public delegate void PlayerObserver();
+
+    #endregion
+
+
+    #region Properties
 
     public PlayerObserver OnPlayerFound;
     public PlayerObserver OnPlayerLost;
 
-    private GameObject _player;
+    #endregion
 
-    private Quaternion _startRotation;
 
-    [SerializeField] private NavMeshAgent _navMeshAgent;
+    #region UnityMethods
 
     private void Start()
     {
@@ -52,5 +71,6 @@ public class GargoyleViewController : MonoBehaviour
         }
     }
 
+    #endregion
 
 }

@@ -1,9 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shot : MonoBehaviour
 {
+    #region UnityMethods
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsPlayerHit(other) || IsEnemyHit(other))
+        {
+            other.gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else if (!IsFriendlyFire(other) && !IsInvisibleObject(other))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    #endregion
+
+
+    #region Methods
+
     private bool IsEnemyHit(Collider other)
     {
         return other.CompareTag("Player") && CompareTag("EnemyShot");
@@ -24,16 +42,6 @@ public class Shot : MonoBehaviour
         return other.CompareTag("Invisible");
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (IsPlayerHit(other) || IsEnemyHit(other))
-        {
-            other.gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-        else if (!IsFriendlyFire(other) && !IsInvisibleObject(other))
-        {
-            Destroy(gameObject);
-        }
-    }
+    #endregion
+
 }

@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class FinishController : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private Canvas _imageCanvas;
-    //[SerializeField] private GameObject _scene;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //_scene.SetActive(false);
             _imageCanvas.gameObject.SetActive(true);
         }
     }
+
+    #endregion
 
 }

@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private float _speed = 4f;
     [SerializeField] private float _turnSpeed = 20f;
 
+    #endregion
+
+
+    #region PrivateData
+
     private Vector3 _movement;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Update()
     {
@@ -21,5 +33,7 @@ public class MovementController : MonoBehaviour
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, _movement, _turnSpeed * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(desiredForward);
     }
+
+    #endregion
 
 }

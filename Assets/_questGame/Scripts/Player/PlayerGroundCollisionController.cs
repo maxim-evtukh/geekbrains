@@ -5,7 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(JumpController))]
 public class PlayerGroundCollisionController : MonoBehaviour
 {
+    #region PrivateData
+
     private JumpController _jumpController;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Awake()
     {
@@ -27,5 +34,7 @@ public class PlayerGroundCollisionController : MonoBehaviour
             _jumpController.SetIsGrounded(false);
         }
     }
+
+    #endregion
 
 }

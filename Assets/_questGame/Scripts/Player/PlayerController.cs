@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject _gun;
+    #region Fields
 
-    private ShootEmitter _shootEmitter;
+    [SerializeField] private ShootEmitter _shootEmitter;
+
+    #endregion
+
+
+    #region PrivateData
+
     private bool _canShoot;
 
-    private void Start()
-    {
-        _shootEmitter = _gun.GetComponent<ShootEmitter>();
-    }
+    #endregion
+
+
+    #region UnityMethods
 
     private void Update()
     {
@@ -22,8 +28,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Methods
+
     public void UnlockGun()
     {
         _canShoot = true;
     }
+
+    #endregion
+
 }

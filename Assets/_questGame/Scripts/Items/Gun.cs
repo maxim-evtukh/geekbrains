@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    #region UnityMethods
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -12,4 +12,7 @@ public class Gun : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    #endregion
+
 }

@@ -1,13 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class JumpController : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private float _jumpForce = 10;
+
+    #endregion
+
+
+    #region PrivateData
 
     private Rigidbody _rigidbody;
     private bool _isGrounded = true;
+
+    #endregion
+
+
+    #region UnityMethods
 
     private void Start()
     {
@@ -22,8 +33,15 @@ public class JumpController : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Methods
+
     public void SetIsGrounded(bool isGrounded)
     {
         _isGrounded = isGrounded;
     }
+
+    #endregion
 }

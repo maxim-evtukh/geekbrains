@@ -5,22 +5,43 @@ using UnityEngine.AI;
 
 public class EnemyWaypointPatrol : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;
-    public Vector3[] waypoints;
+    #region Fields
 
-    int m_CurrentWaypointIndex;
+    [SerializeField] private NavMeshAgent navMeshAgent;
 
-    void Start()
+    #endregion
+
+
+    #region Properties
+
+    public Vector3[] Waypoints;
+
+    #endregion
+
+
+    #region PrivateData
+
+    private int _currentWaypointIndex;
+
+    #endregion
+
+
+    #region UnityMethods
+
+    private void Start()
     {
-        navMeshAgent.SetDestination(waypoints[0]);
+        navMeshAgent.SetDestination(Waypoints[0]);
     }
 
-    void Update()
+    private void Update()
     {
         if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
         {
-            m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
-            navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex]);
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % Waypoints.Length;
+            navMeshAgent.SetDestination(Waypoints[_currentWaypointIndex]);
         }
     }
+
+    #endregion
+
 }
