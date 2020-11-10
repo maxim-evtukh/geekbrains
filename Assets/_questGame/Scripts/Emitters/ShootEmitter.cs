@@ -10,6 +10,7 @@ public class ShootEmitter : MonoBehaviour
     [SerializeField] private float _firstShotDelay;
     [SerializeField] private float _shotDelay;
     [SerializeField] private float _shotSpeed;
+    [SerializeField] private float _shotLifeTime = 3.0f;
 
     #endregion
 
@@ -30,7 +31,7 @@ public class ShootEmitter : MonoBehaviour
 
     private void Update()
     {
-        InitGun();
+        MakeShot();
     }
 
     #endregion
@@ -40,8 +41,11 @@ public class ShootEmitter : MonoBehaviour
 
     public void MakeShot()
     {
-        InitShot(gameObject.transform);
-        DelayLazerShot();
+        if (Time.time > _nextShotTime)
+        {
+            InitShot(gameObject.transform);
+            DelayLazerShot();
+        }
     }
 
     private void DelayLazerShot()
@@ -51,17 +55,13 @@ public class ShootEmitter : MonoBehaviour
 
     private void InitShot(Transform from)
     {
-        var shot = Instantiate(_shoot, from.position, Quaternion.identity);
-        var forwardVel = transform.forward * -_shotSpeed;
-        shot.GetComponent<Rigidbody>().velocity = new Vector3(forwardVel.x, 0, forwardVel.z);
-    }
+        var shot = Instantiate(_shoot, from.position, from.rotation);
+        var rigidbody = shot.GetComponent<Rigidbody>();
 
-    private void InitGun()
-    {
-        if (Time.time > _nextShotTime)
-        {
-            MakeShot();
-        }
+        var impulse = from.forward * rigidbody.mass * _shotSpeed;
+        rigidbody.AddForce(impulse);
+
+        Destroy(shot, _shotLifeTime);
     }
 
     #endregion

@@ -126,10 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9642228b2bf84cd3abdf2ac7ef23947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shoot: {fileID: 5078677076577915880, guid: 8e566af5e29224eacb2a4acb7c798cc6, type: 3}
-  _firstShotDelay: 2
-  _shotDelay: 5
-  _shotSpeed: -2
+  _shoot: {fileID: 989043365358382684, guid: d1bc33743343b436eb1a6c395b82854e, type: 3}
+  _firstShotDelay: 1
+  _shotDelay: 3
+  _shotSpeed: 300
+  _shotLifeTime: 3
 --- !u!1 &8659230790534070658
 GameObject:
   m_ObjectHideFlags: 0

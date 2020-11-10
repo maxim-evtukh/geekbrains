@@ -2,6 +2,7 @@
 
 public class Shot : MonoBehaviour
 {
+
     #region UnityMethods
 
     private void OnTriggerEnter(Collider other)

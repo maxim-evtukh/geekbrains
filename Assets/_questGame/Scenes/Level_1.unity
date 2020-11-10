@@ -989,7 +989,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170341558}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.529, z: 0.2539997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1008,10 +1008,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9642228b2bf84cd3abdf2ac7ef23947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shoot: {fileID: 316641098684240976, guid: 30301cb9a362841df8dfb985ad063002, type: 3}
+  _shoot: {fileID: 6297626429888569176, guid: f61a67029663444518e9dc3b4336ef29, type: 3}
   _firstShotDelay: 0
-  _shotDelay: 5
-  _shotSpeed: -2
+  _shotDelay: 1
+  _shotSpeed: 300
+  _shotLifeTime: 3
 --- !u!1001 &1266462601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1680,7 +1681,7 @@ PrefabInstance:
     - target: {fileID: 5515008499709634024, guid: 72ad4082160634f3990cd895362929d3,
         type: 3}
       propertyPath: m_Name
-      value: "\u0451-=0"
+      value: JognLemon
       objectReference: {fileID: 0}
     - target: {fileID: 5515008499709634024, guid: 72ad4082160634f3990cd895362929d3,
         type: 3}
