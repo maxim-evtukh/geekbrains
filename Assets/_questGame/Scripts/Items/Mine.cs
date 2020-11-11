@@ -5,6 +5,7 @@ public class Mine : MonoBehaviour
     #region Fields
 
     [SerializeField] private float _destroyDelay;
+    [SerializeField] private GameObject _explosionPrefab;
 
     #endregion
 
@@ -35,8 +36,10 @@ public class Mine : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.SetActive(false);
             gameObject.SetActive(false);
+
+            var explosion = Instantiate(_explosionPrefab, gameObject.transform.position, Quaternion.identity);
+            Destroy(explosion, 4.0f);
         }
     }
 

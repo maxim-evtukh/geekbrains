@@ -23,7 +23,7 @@ public class MineEmitter : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && _instantiatedMine == null)
+        if (Input.GetKeyDown(KeyCode.E) && _instantiatedMine == null)
         {
             _instantiatedMine = Instantiate(_mine, new Vector3(gameObject.transform.position.x, _mine.transform.localScale.y / 2, gameObject.transform.position.z), Quaternion.identity);
             _instantiatedMine.GetComponent<DeactivationController>().OnDisabled = OnMineDisabled;

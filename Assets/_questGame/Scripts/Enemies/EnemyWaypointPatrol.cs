@@ -49,7 +49,7 @@ public class EnemyWaypointPatrol : MonoBehaviour
 
     private void Start()
     {
-        navMeshAgent.SetDestination(Waypoints[0]);
+        ResetStartPoint();
     }
 
     private void Update()
@@ -58,7 +58,7 @@ public class EnemyWaypointPatrol : MonoBehaviour
         {
             navMeshAgent.SetDestination(_invader.transform.position);
         }
-        else if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
+        else if (Waypoints != null && Waypoints.Length > 0 && navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
         {
             _currentWaypointIndex = (_currentWaypointIndex + 1) % Waypoints.Length;
             navMeshAgent.SetDestination(Waypoints[_currentWaypointIndex]);
@@ -105,11 +105,19 @@ public class EnemyWaypointPatrol : MonoBehaviour
 
     #region Methods
 
+    private void ResetStartPoint()
+    {
+        if (Waypoints != null && Waypoints.Length > 0)
+        {
+            _currentWaypointIndex = 0;
+            navMeshAgent.SetDestination(Waypoints[0]);
+        }
+    }
+
     private IEnumerator WaitBeforeReturnToPatrol()
     {
         yield return new WaitForSeconds(_waitTime);
-        _currentWaypointIndex = 0;
-        navMeshAgent.SetDestination(Waypoints[0]);
+        ResetStartPoint();
     }
 
     #endregion

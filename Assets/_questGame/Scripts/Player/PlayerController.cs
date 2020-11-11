@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_canShoot && Input.GetKeyDown(KeyCode.Space))
+        if (_canShoot && Input.GetKeyDown(KeyCode.Mouse0))
         {
             _shootEmitter.MakeShot();
         }

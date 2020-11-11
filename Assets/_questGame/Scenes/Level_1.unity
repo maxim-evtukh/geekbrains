@@ -1040,7 +1040,7 @@ MonoBehaviour:
   _shoot: {fileID: 6297626429888569176, guid: f61a67029663444518e9dc3b4336ef29, type: 3}
   _firstShotDelay: 0
   _shotDelay: 1
-  _shotSpeed: 300
+  _shotSpeed: 350
   _shotLifeTime: 3
 --- !u!1001 &1266462601
 PrefabInstance:
