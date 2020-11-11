@@ -8,6 +8,7 @@ public class PlayerGroundCollisionController : MonoBehaviour
     #region PrivateData
 
     private JumpController _jumpController;
+    private int _groundID;
 
     #endregion
 
@@ -21,15 +22,16 @@ public class PlayerGroundCollisionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
+            _groundID = collision.gameObject.GetInstanceID();
             _jumpController.SetIsGrounded(true);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.GetInstanceID() == _groundID)
         {
             _jumpController.SetIsGrounded(false);
         }

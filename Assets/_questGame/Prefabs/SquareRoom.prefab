@@ -354,7 +354,7 @@ OffMeshLink:
   m_CostOverride: -1
   m_BiDirectional: 1
   m_Activated: 1
-  m_AutoUpdatePositions: 0
+  m_AutoUpdatePositions: 1
 --- !u!191 &703760529767281718
 OffMeshLink:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ OffMeshLink:
   m_CostOverride: -1
   m_BiDirectional: 1
   m_Activated: 1
-  m_AutoUpdatePositions: 0
+  m_AutoUpdatePositions: 1
 --- !u!1 &6455090910291735589
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 7220140995110921433}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40

@@ -11,6 +11,7 @@ public class EnemiesEmitter : MonoBehaviour
     [SerializeField] private int _enemiesCount;
     [SerializeField] private float _yRotation;
     [SerializeField] private Transform _destinationWaypoint;
+    [SerializeField] private ZoneController _zone;
 
     #endregion
 
@@ -82,10 +83,13 @@ public class EnemiesEmitter : MonoBehaviour
 
         if (_destinationWaypoint != null)
         {
+            var patrolComponent = enemy.GetComponent<EnemyWaypointPatrol>();
+
             var destinationVector = new Vector3(transform.localScale.x > transform.localScale.z ? enemy.transform.position.x : _destinationWaypoint.position.x,
                                             0,
                                             transform.localScale.x > transform.localScale.z ? _destinationWaypoint.position.z : enemy.transform.position.z);
-            enemy.GetComponent<EnemyWaypointPatrol>().Waypoints = new Vector3[] { enemy.transform.position, destinationVector };
+            patrolComponent.Waypoints = new Vector3[] { enemy.transform.position, destinationVector };
+            patrolComponent.SetZone(_zone);
         }
 
         _enemies.Add(enemy);
