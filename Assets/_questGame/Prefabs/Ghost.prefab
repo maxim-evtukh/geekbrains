@@ -639,9 +639,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1270459482472491497}
-  waypoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  _waitTime: 2
+  Waypoints: []
 --- !u!1 &5391568399763398634
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PointOfView
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903280789943914309, guid: 8a6f7024e2eb90140bdf570ef653bac8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Invisible
       objectReference: {fileID: 0}
     - target: {fileID: 4953394414445174501, guid: 8a6f7024e2eb90140bdf570ef653bac8,
         type: 3}

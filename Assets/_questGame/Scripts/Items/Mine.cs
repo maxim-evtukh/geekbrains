@@ -10,37 +10,33 @@ public class Mine : MonoBehaviour
     #endregion
 
 
-    #region PrivateData
-
-    private float _selfDestroyTime;
-
-    #endregion
-
-
     #region UnityMethods
 
     private void Start()
     {
-        _selfDestroyTime = Time.time + _destroyDelay;
-    }
-
-    private void Update()
-    {
-        if (Time.time > _selfDestroyTime)
-        {
-            gameObject.SetActive(false);
-        }
+        var selfDestroyTime = Time.time + _destroyDelay;
+        Invoke(nameof(Explode), selfDestroyTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            gameObject.SetActive(false);
-
-            var explosion = Instantiate(_explosionPrefab, gameObject.transform.position, Quaternion.identity);
-            Destroy(explosion, 4.0f);
+            Explode();
         }
+    }
+
+    #endregion
+
+
+    #region Methods
+
+    private void Explode()
+    {
+        gameObject.SetActive(false);
+
+        var explosion = Instantiate(_explosionPrefab, gameObject.transform.position, Quaternion.identity);
+        Destroy(explosion, 4.0f);
     }
 
     #endregion

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,6 +13,8 @@ public class EnemiesEmitter : MonoBehaviour
     [SerializeField] private float _yRotation;
     [SerializeField] private Transform _destinationWaypoint;
     [SerializeField] private ZoneController _zone;
+    [SerializeField] private int _wavesCount = 1;
+    [SerializeField] private float _wavesDelay = 5.0f;
 
     #endregion
 
@@ -19,6 +22,8 @@ public class EnemiesEmitter : MonoBehaviour
     #region PrivateData
 
     private List<GameObject> _enemies = new List<GameObject>();
+    private Coroutine _wavesCoroutine;
+    private int _emittedWavesCount = 0;
 
     #endregion
 
@@ -41,9 +46,36 @@ public class EnemiesEmitter : MonoBehaviour
 
     private void Start()
     {
+        InitWave();
+
+        if (_wavesCount > 1)
+        {
+            _wavesCoroutine = StartCoroutine(nameof(StartWavesRoutine));
+        }
+    }
+
+    #endregion
+
+
+    #region Methods
+
+    private IEnumerator StartWavesRoutine()
+    {
+        while (_emittedWavesCount < _wavesCount)
+        {
+            yield return new WaitForSeconds(_wavesDelay);
+
+            InitWave();
+        }
+    }
+
+    private void InitWave()
+    {
+        _emittedWavesCount += 1;
+
         float getAxe() => transform.localScale.x > transform.localScale.z
-                ? transform.localScale.x
-                : transform.localScale.z;
+                        ? transform.localScale.x
+                        : transform.localScale.z;
 
         var middle = getAxe() / 2;
 
@@ -61,11 +93,6 @@ public class EnemiesEmitter : MonoBehaviour
             }
         }
     }
-
-    #endregion
-
-
-    #region Methods
 
     private void InitEnemy(float position)
     {
@@ -101,7 +128,7 @@ public class EnemiesEmitter : MonoBehaviour
         _enemies.Remove(enemy);
         Destroy(enemy);
 
-        if (_enemies.Count == 0)
+        if (_enemies.Count == 0 && _emittedWavesCount == _wavesCount)
         {
             OnAllEnemiesKilled?.Invoke();
         }

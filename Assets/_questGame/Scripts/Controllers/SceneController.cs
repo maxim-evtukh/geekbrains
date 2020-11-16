@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        _player.GetComponent<DeactivationController>().OnDisabled = OnPlayerCaught;
+        _player.GetComponent<PlayerController>().Caught = OnPlayerCaught;
     }
 
     private void Update()
@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
 
     #region Methods
 
-    private void OnPlayerCaught(int instanceID)
+    private void OnPlayerCaught()
     {
         SceneManager.LoadScene(0);
     }

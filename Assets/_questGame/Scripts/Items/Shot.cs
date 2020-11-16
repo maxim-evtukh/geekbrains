@@ -9,7 +9,11 @@ public class Shot : MonoBehaviour
     {
         if (IsPlayerHit(other) || IsEnemyHit(other))
         {
-            other.gameObject.SetActive(false);
+            if (IsEnemyHit(other))
+                other.gameObject.GetComponent<PlayerController>().OnCaught();
+            else
+                other.gameObject.SetActive(false);
+
             Destroy(gameObject);
         }
         else if (!IsFriendlyFire(other) && !IsInvisibleObject(other))

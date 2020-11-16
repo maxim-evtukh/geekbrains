@@ -10,6 +10,19 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Delegates
+
+    public delegate void CaughtDelegate();
+
+    #endregion
+
+
+    #region Properties
+
+    public CaughtDelegate Caught;
+
+    #endregion
+
 
     #region PrivateData
 
@@ -36,6 +49,11 @@ public class PlayerController : MonoBehaviour
     public void UnlockGun()
     {
         _canShoot = true;
+    }
+
+    public void OnCaught()
+    {
+        Caught?.Invoke();
     }
 
     #endregion
