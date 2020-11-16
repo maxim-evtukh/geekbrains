@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6297626429888569176, guid: f61a67029663444518e9dc3b4336ef29,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyShot
+      objectReference: {fileID: 0}
     - target: {fileID: 6297626429888569183, guid: f61a67029663444518e9dc3b4336ef29,
         type: 3}
       propertyPath: m_LocalPosition.x

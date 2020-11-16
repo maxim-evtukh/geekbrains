@@ -7,7 +7,7 @@ public class RoomController : MonoBehaviour
     #region Fields
 
     [SerializeField] private EnemiesEmitter _enemiesEmitter;
-    [SerializeField] private GameObject _door;
+    [SerializeField] private DoorController _door;
 
     #endregion
 
@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour
 
         if (_door != null)
         {
-            _door.SetActive(false);
+            _door.InteractionsEnabled = true;
         }
     }
 
