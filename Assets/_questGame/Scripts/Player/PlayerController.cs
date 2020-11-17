@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_canShoot && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            _shootEmitter.MakeShot();
+            _shootEmitter.MakeShotToMouse();
         }
     }
 

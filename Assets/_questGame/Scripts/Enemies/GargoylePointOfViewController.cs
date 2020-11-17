@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class GargoyleViewController : MonoBehaviour
+public class GargoylePointOfViewController : MonoBehaviour
 {
     #region Fields
 
@@ -45,7 +45,11 @@ public class GargoyleViewController : MonoBehaviour
         if (_player != null)
         {
             var pos = _player.transform.position - _navMeshAgent.transform.position;
-            _navMeshAgent.transform.rotation = Quaternion.LookRotation(pos);
+            var rotation = Quaternion.LookRotation(pos);
+            rotation.x = 0;
+            rotation.z = 0;
+
+            _navMeshAgent.transform.rotation = rotation;
         }
         else
         {

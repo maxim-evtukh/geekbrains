@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8691325614878789666}
   - component: {fileID: 55018125281298005}
-  - component: {fileID: 655896814990362356}
+  - component: {fileID: 7833495766010207010}
   m_Layer: 0
   m_Name: PointOfView
   m_TagString: Invisible
@@ -177,7 +177,7 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 2}
---- !u!114 &655896814990362356
+--- !u!114 &7833495766010207010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8659230790534070658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf214ac75ca704b61bea23cb4a7da1d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1098b906a08d6468e9174897d901033a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: -2595423733894045393}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3db60462bb848338823a3fc57db807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewController: {fileID: 655896814990362356}
+  _pointOfViewController: {fileID: 7833495766010207010}
   _shootEmitter: {fileID: 5057563755409528257}
 --- !u!114 &-1185623566218120931
 MonoBehaviour:

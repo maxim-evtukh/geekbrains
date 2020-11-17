@@ -6,6 +6,7 @@ public class Mine : MonoBehaviour
 
     [SerializeField] private float _destroyDelay;
     [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     #endregion
 
@@ -14,6 +15,8 @@ public class Mine : MonoBehaviour
 
     private void Start()
     {
+        _particleSystem = _explosionPrefab.GetComponentInChildren<ParticleSystem>();
+
         var selfDestroyTime = Time.time + _destroyDelay;
         Invoke(nameof(Explode), selfDestroyTime);
     }
@@ -36,7 +39,7 @@ public class Mine : MonoBehaviour
         gameObject.SetActive(false);
 
         var explosion = Instantiate(_explosionPrefab, gameObject.transform.position, Quaternion.identity);
-        Destroy(explosion, 4.0f);
+        Destroy(explosion, _particleSystem.main.duration);
     }
 
     #endregion

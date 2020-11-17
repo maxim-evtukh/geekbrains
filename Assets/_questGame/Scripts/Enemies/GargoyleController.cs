@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GargoyleController : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private GargoyleViewController _viewController;
+    [SerializeField] private GargoylePointOfViewController _pointOfViewController;
     [SerializeField] private ShootEmitter _shootEmitter;
 
     #endregion
@@ -15,10 +12,16 @@ public class GargoyleController : MonoBehaviour
 
     #region UnityMethods
 
-    private void Start()
+    private void OnEnable()
     {
-        _viewController.OnPlayerFound = OnPlayerFound;
-        _viewController.OnPlayerLost = OnPlayerLost;
+        _pointOfViewController.OnPlayerFound += OnPlayerFound;
+        _pointOfViewController.OnPlayerLost += OnPlayerLost;
+    }
+
+    private void OnDisable()
+    {
+        _pointOfViewController.OnPlayerFound -= OnPlayerFound;
+        _pointOfViewController.OnPlayerLost -= OnPlayerLost;
     }
 
     #endregion

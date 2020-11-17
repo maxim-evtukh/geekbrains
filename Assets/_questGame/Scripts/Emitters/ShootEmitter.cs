@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootEmitter : MonoBehaviour
 {
@@ -43,7 +41,16 @@ public class ShootEmitter : MonoBehaviour
     {
         if (Time.time > _nextShotTime)
         {
-            InitShot(gameObject.transform);
+            InitShot();
+            DelayLazerShot();
+        }
+    }
+
+    public void MakeShotToMouse()
+    {
+        if (Time.time > _nextShotTime)
+        {
+            InitShot(true);
             DelayLazerShot();
         }
     }
@@ -53,12 +60,25 @@ public class ShootEmitter : MonoBehaviour
         _nextShotTime = Time.time + _shotDelay;
     }
 
-    private void InitShot(Transform from)
+    private void InitShot(bool isShootingToMouse = false)
     {
+        var from = gameObject.transform;
+
+        if (isShootingToMouse)
+        {
+            //    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //    var rotation = Quaternion.LookRotation(ray.direction);
+            //    rotation.x = 0;
+            //    rotation.z = 0;
+
+            //    transform.rotation = rotation;
+        }
+
         var shot = Instantiate(_shoot, from.position, from.rotation);
         var rigidbody = shot.GetComponent<Rigidbody>();
 
-        var impulse = from.forward * rigidbody.mass * _shotSpeed;
+        var impulse = transform.forward * rigidbody.mass * _shotSpeed;
+
         rigidbody.AddForce(impulse);
 
         Destroy(shot, _shotLifeTime);

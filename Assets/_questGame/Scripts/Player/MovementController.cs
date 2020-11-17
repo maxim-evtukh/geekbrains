@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class MovementController : MonoBehaviour
 
     #region PrivateData
 
+    private Animator _animator;
     private Vector3 _movement;
 
     #endregion
@@ -21,12 +20,19 @@ public class MovementController : MonoBehaviour
 
     #region UnityMethods
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         _movement.Set(horizontal, 0f, vertical);
+
+        _animator.SetBool("IsWalking", horizontal != 0 || vertical != 0);
 
         transform.position += _movement * (_speed * Time.deltaTime);
 

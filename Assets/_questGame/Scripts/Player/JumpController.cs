@@ -12,6 +12,7 @@ public class JumpController : MonoBehaviour
 
     #region PrivateData
 
+    private Animator _animator;
     private Rigidbody _rigidbody;
     private bool _isGrounded = true;
 
@@ -23,12 +24,14 @@ public class JumpController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            _animator.enabled = false;
             _rigidbody.AddForce(new Vector3(0, _jumpForce, 0));
         }
     }
@@ -40,6 +43,7 @@ public class JumpController : MonoBehaviour
 
     public void SetIsGrounded(bool isGrounded)
     {
+        _animator.enabled = isGrounded;
         _isGrounded = isGrounded;
     }
 
