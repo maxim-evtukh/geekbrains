@@ -4,8 +4,8 @@ public class GunEmitter : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private EnemiesEmitter _enemiesEmitter;
     [SerializeField] private GameObject _gun;
+    [SerializeField] private EnemiesEmitter _enemiesEmitter;
 
     #endregion
 

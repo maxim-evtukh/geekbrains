@@ -6,7 +6,13 @@ public class Mine : MonoBehaviour
 
     [SerializeField] private float _destroyDelay;
     [SerializeField] private GameObject _explosionPrefab;
-    [SerializeField] private ParticleSystem _particleSystem;
+
+    #endregion
+
+
+    #region PrivateData
+
+    private ParticleSystem _particleSystem;
 
     #endregion
 

@@ -10,13 +10,21 @@ public class ZoneController : MonoBehaviour
     #endregion
 
 
+    #region Properties
+
+    public GameObject Invader { get; private set; }
+
+    #endregion
+
+
     #region UnityMethods
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnInvaded(collision.gameObject);
+            Invader = collision.gameObject;
+            OnInvaded();
         }
     }
 
@@ -24,7 +32,8 @@ public class ZoneController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnInvaded(null);
+            Invader = null;
+            OnInvaded();
         }
     }
 
@@ -33,9 +42,9 @@ public class ZoneController : MonoBehaviour
 
     #region Methods
 
-    private void OnInvaded(GameObject gameObject)
+    private void OnInvaded()
     {
-        Invaded?.Invoke(this, gameObject);
+        Invaded?.Invoke(this, Invader);
     }
 
     #endregion

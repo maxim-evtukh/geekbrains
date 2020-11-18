@@ -17,7 +17,7 @@ public class NextLevelLoadingController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(LoadYourAsyncScene());
+            StartCoroutine(LoadSceneRoutine());
         }
     }
 
@@ -26,7 +26,7 @@ public class NextLevelLoadingController : MonoBehaviour
 
     #region Methods
 
-    private IEnumerator LoadYourAsyncScene()
+    private IEnumerator LoadSceneRoutine()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nextLevelName, LoadSceneMode.Single);
 

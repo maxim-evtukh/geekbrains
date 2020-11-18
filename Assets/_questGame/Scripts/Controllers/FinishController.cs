@@ -5,6 +5,7 @@ public class FinishController : MonoBehaviour
     #region Fields
 
     [SerializeField] private Canvas _imageCanvas;
+    [SerializeField] private SceneController _sceneController;
 
     #endregion
 
@@ -15,6 +16,7 @@ public class FinishController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _sceneController.GameFinished();
             _imageCanvas.gameObject.SetActive(true);
         }
     }

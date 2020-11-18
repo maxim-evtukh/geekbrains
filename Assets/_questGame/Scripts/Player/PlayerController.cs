@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     #region Fields
 
     [SerializeField] private ShootEmitter _shootEmitter;
+    [SerializeField] private UiController _uiController = null;
 
     #endregion
 
@@ -33,11 +34,25 @@ public class PlayerController : MonoBehaviour
 
     #region UnityMethods
 
+    private void Start()
+    {
+        if (_uiController != null)
+            _uiController.ShowMineHint();
+    }
+
     private void Update()
     {
         if (_canShoot && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            _shootEmitter.MakeShotToMouse();
+            var cam = Camera.main;
+            var ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out var hit))
+            {
+                var point = hit.point;
+                point.y = _shootEmitter.gameObject.transform.position.y;
+                _shootEmitter.MakeShotToTarget(point);
+            }
         }
     }
 
@@ -49,6 +64,9 @@ public class PlayerController : MonoBehaviour
     public void UnlockGun()
     {
         _canShoot = true;
+
+        if (_uiController != null)
+            _uiController.ShowFireHint();
     }
 
     public void OnCaught()

@@ -41,16 +41,16 @@ public class ShootEmitter : MonoBehaviour
     {
         if (Time.time > _nextShotTime)
         {
-            InitShot();
+            InitShot(Vector3.zero);
             DelayLazerShot();
         }
     }
 
-    public void MakeShotToMouse()
+    public void MakeShotToTarget(Vector3 targetPosition)
     {
         if (Time.time > _nextShotTime)
         {
-            InitShot(true);
+            InitShot(targetPosition);
             DelayLazerShot();
         }
     }
@@ -60,24 +60,25 @@ public class ShootEmitter : MonoBehaviour
         _nextShotTime = Time.time + _shotDelay;
     }
 
-    private void InitShot(bool isShootingToMouse = false)
+    private void InitShot(Vector3 targetPosition)
     {
         var from = gameObject.transform;
-
-        if (isShootingToMouse)
-        {
-            //    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //    var rotation = Quaternion.LookRotation(ray.direction);
-            //    rotation.x = 0;
-            //    rotation.z = 0;
-
-            //    transform.rotation = rotation;
-        }
-
         var shot = Instantiate(_shoot, from.position, from.rotation);
         var rigidbody = shot.GetComponent<Rigidbody>();
 
-        var impulse = transform.forward * rigidbody.mass * _shotSpeed;
+        Vector3 impulse;
+
+        if (targetPosition != Vector3.zero)
+        {
+            var dir = (targetPosition - transform.position).normalized;
+            impulse = dir.normalized * rigidbody.mass * _shotSpeed;
+
+            shot.transform.LookAt(impulse);
+        }
+        else
+        {
+            impulse = transform.forward * rigidbody.mass * _shotSpeed;
+        }
 
         rigidbody.AddForce(impulse);
 

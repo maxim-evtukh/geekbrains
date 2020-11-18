@@ -79,6 +79,11 @@ public class EnemyWaypointPatrol : MonoBehaviour
 
         if (_zone != null)
         {
+            if (_zone.Invader != null)
+            {
+                OnPlayerInvaded(_zone, _zone.Invader);
+            }
+
             _zone.Invaded += OnPlayerInvaded;
         }
     }

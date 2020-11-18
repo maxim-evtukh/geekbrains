@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c658f52ce9f49acbdcb4edc86b3c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyDelay: 5
+  _destroyDelay: 3
   _explosionPrefab: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
+  _particleSystem: {fileID: 0}

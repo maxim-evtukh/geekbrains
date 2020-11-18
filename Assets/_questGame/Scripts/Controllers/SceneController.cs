@@ -10,6 +10,13 @@ public class SceneController : MonoBehaviour
     #endregion
 
 
+    #region PrivateData
+
+    private Menu.Mode _menuMode = Menu.Mode.Pause;
+
+    #endregion
+
+
     #region UnityMethods
 
     private void Start()
@@ -19,9 +26,11 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !SceneManager.GetSceneByName("Menu").isLoaded)
         {
-            Application.Quit();
+            Menu.CurrentMode = _menuMode;
+
+            SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
         }
     }
 
@@ -30,9 +39,14 @@ public class SceneController : MonoBehaviour
 
     #region Methods
 
+    public void GameFinished()
+    {
+        _menuMode = Menu.Mode.Menu;
+    }
+
     private void OnPlayerCaught()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion
