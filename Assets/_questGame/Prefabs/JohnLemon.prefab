@@ -641,7 +641,8 @@ AudioSource:
   m_GameObject: {fileID: 5515008499709634024}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6799423946351802190, guid: ed91d606f001d41d8bac2dc4c844459d,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 07e520bb410492d47bf739846d70f2a3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -749,7 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootEmitter: {fileID: 0}
-  _shootTarget: {fileID: 0}
+  _uiController: {fileID: 0}
 --- !u!1 &5992735395461554809
 GameObject:
   m_ObjectHideFlags: 0

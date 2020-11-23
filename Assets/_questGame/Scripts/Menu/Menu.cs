@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class Menu : MonoBehaviour
     #region Fields
 
     [SerializeField] Button _startButton;
+    [SerializeField] Button _settingsButton;
     [SerializeField] Button _exitButton;
     [SerializeField] Image _background;
 
@@ -34,6 +36,7 @@ public class Menu : MonoBehaviour
     private void OnEnable()
     {
         _startButton.onClick.AddListener(OnStartExecute);
+        _settingsButton.onClick.AddListener(OnSettingsExecute);
         _exitButton.onClick.AddListener(OnExitExecute);
     }
 
@@ -48,6 +51,7 @@ public class Menu : MonoBehaviour
     private void OnDisable()
     {
         _startButton.onClick.RemoveListener(OnStartExecute);
+        _settingsButton.onClick.RemoveListener(OnSettingsExecute);
         _exitButton.onClick.RemoveListener(OnExitExecute);
     }
 
@@ -110,6 +114,11 @@ public class Menu : MonoBehaviour
     private void OnExitExecute()
     {
         Application.Quit();
+    }
+
+    private void OnSettingsExecute()
+    {
+        SceneManager.LoadScene("Settings", LoadSceneMode.Additive);
     }
 
     #endregion
